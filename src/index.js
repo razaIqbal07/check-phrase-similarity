@@ -26,5 +26,3 @@ const checkSimilarity = (base, comparisonSentences) => {
   console.log(result);
   return result;
 };
-
-checkSimilarity("hey there", ["hey yo", "ok"]);

@@ -5,11 +5,12 @@ const checkSimilarity = (base, comparisonSentences) => {
   let count = 0;
   let similarityPercentage = 0;
   let baseArray = base.split(" ");
-  comparisonSentences.forEach(sentence => {
+  baseArray = baseArray.filter((word) => !ignoredWords.includes(word));
+  comparisonSentences.forEach((sentence) => {
     let currentPhrase = sentence.split(" ");
     let phraseLength = currentPhrase.length;
 
-    currentPhrase.forEach(word => {
+    currentPhrase.forEach((word) => {
       if (baseArray.includes(word) && !ignoredWords.includes(word)) {
         count++;
       }
@@ -18,7 +19,7 @@ const checkSimilarity = (base, comparisonSentences) => {
     result.push({
       base: base,
       currentPhrase: sentence,
-      similarity: similarityPercentage + "%"
+      similarity: similarityPercentage + "%",
     });
     count = 0;
     similarityPercentage = 0;
